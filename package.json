@@ -2,6 +2,7 @@
   "name": "my-webpack-cli",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": false,
   "scripts": {
     "dev": "cross-env NODE_ENV=development BUILD_ENV=dev webpack-dev-server --config ./build/webpack.dev.config.js",
     "build": "npm run build:dev",
@@ -12,13 +13,16 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.4",
     "autoprefixer": "^9.4.9",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -30,5 +34,8 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }

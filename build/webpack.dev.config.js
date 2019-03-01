@@ -9,11 +9,10 @@ const devConfig = {
     contentBase: path.resolve(__dirname, '../dist/'),
     open: true,
     port: 9090,
-    hot: true,
-    hotOnly: true
+    hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin({})
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
 
