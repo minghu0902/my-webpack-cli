@@ -1,6 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
+
+const BUILD_ENV = process.env.BUILD_ENV || 'dev';
 
 module.exports = {
   entry: {
@@ -87,7 +90,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name]_[hash:8].css",
       chunkFilename: "[id]_[hash:8].css"
-    })
+    }),
+    new CopyPlugin([
+      { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
+    ]),
   ],
   optimization: {
     splitChunks: {

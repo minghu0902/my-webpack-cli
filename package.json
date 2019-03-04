@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development BUILD_ENV=dev webpack-dev-server --config ./build/webpack.dev.config.js",
     "build": "npm run build:dev",
-    "build:dev": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --json > stats.json --config ./build/webpack.prod.config.js",
+    "build:dev": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --config ./build/webpack.prod.config.js",
     "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "server": "cross-env http-server ./dist -p 8090"
@@ -20,6 +20,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^5.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.15.0",
