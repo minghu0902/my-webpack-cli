@@ -27,8 +27,7 @@ function getHtmlWebpackPlugins () {
       filename: name + '.html',
       chunks: [name],
       removeComments: true,
-      collapseWhitespace: true,
-      removeRedundantAttributes: true
+      collapseWhitespace: true
     })
   })
 }
