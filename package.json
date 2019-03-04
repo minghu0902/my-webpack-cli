@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_ENV=development BUILD_ENV=dev webpack-dev-server --config ./build/webpack.dev.config.js",
     "build": "npm run build:dev",
     "build:dev": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --config ./build/webpack.prod.config.js",
-    "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --config ./build/webpack.prod.config.js",
+    "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "server": "cross-env http-server ./dist -p 8090"
   },
@@ -15,6 +15,7 @@
     "@babel/core": "^7.3.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.4",
+    "@types/ejs": "^2.6.3",
     "@types/lodash": "^4.14.121",
     "autoprefixer": "^9.4.9",
     "babel-eslint": "^10.0.1",
@@ -23,6 +24,7 @@
     "copy-webpack-plugin": "^5.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
+    "ejs-loader": "^0.3.1",
     "eslint": "^5.15.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.16.0",
@@ -41,11 +43,13 @@
     "typescript": "^3.3.3333",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.1.0",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "ejs": "^2.6.1"
   }
 }

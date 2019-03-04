@@ -11,6 +11,9 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]_[hash:8].js'
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.ejs', 'css', 'scss']
+  },
   module: {
     rules: [{
       test: /\.js$/,
@@ -23,7 +26,22 @@ module.exports = {
       }]
     }, {
       test: /\.(ts|tsx)$/,
-      loader: 'ts-loader'
+      use: {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }
+    }, {
+      test: /\.ejs$/,
+      use: {
+        loader: 'ejs-loader',
+        options: {
+          variable: 'data',
+          interpolate : /\{\{(.+?)\}\}/g,
+          evaluate    : /\[\[(.+?)\]\]/g
+        }
+      }
     }, {
       test: /\.(jpg|png|gif)$/i,
       use: {
@@ -88,18 +106,11 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
-    ]),
+    ])
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        lodash: {
-          test: /lodash/ig,
-          filename: 'js/lodash_[hash:8].js',
-          enforce: true
-        }
-      }
+      chunks: 'all'
     }
   }
 }

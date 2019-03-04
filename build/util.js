@@ -25,7 +25,10 @@ function getHtmlWebpackPlugins () {
     return new HtmlWebpackPlugin({
       template: file,
       filename: name + '.html',
-      chunks: [name]
+      chunks: [name],
+      removeComments: true,
+      collapseWhitespace: true,
+      removeRedundantAttributes: true
     })
   })
 }
