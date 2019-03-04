@@ -15,10 +15,7 @@ const devConfig = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  ],
-  optimization: {
-    usedExports: true // tree shaking，production 模式下默认是true, 所以不用配置
-  }
+  ]
 }
 
 module.exports = merge(baseConfig, devConfig);

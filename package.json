@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_ENV=development BUILD_ENV=dev webpack-dev-server --config ./build/webpack.dev.config.js",
     "build": "npm run build:dev",
     "build:dev": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --config ./build/webpack.prod.config.js",
-    "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --json > stats.json --config ./build/webpack.prod.config.js",
+    "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --config ./build/webpack.prod.config.js",
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "server": "cross-env http-server ./dist -p 8090"
   },
