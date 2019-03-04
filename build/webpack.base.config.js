@@ -1,14 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
+const { getEntrys, getHtmlWebpackPlugins } = require('./util');
 
 const BUILD_ENV = process.env.BUILD_ENV || 'dev';
 
 module.exports = {
-  entry: {
-    'index': path.resolve(__dirname, '../src/pages/index/index.ts')
-  },
+  entry: getEntrys(),
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]_[hash:8].js'
@@ -83,10 +81,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/pages/index/index.html'),
-      filename: 'index.html'
-    }),
+    ...getHtmlWebpackPlugins(),
     new MiniCssExtractPlugin({
       filename: "css/[name]_[hash:8].css",
       chunkFilename: "[id]_[hash:8].css"
