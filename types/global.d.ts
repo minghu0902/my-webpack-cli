@@ -1,1 +1,3 @@
-declare function template(id: string, data: any): string;
+declare module '*.html' {
+  export default function template(data?:any): any;
+}

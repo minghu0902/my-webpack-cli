@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const { getEntrys, getHtmlWebpackPlugins } = require('./util');
@@ -34,8 +33,8 @@ module.exports = {
         }
       }
     }, {
-      test: /\.html$/,
-      loader: 'art-template-loader'
+      test: /\.hbs$/,
+      loader: 'handlebars-loader'
     }, {
       test: /\.(jpg|png|gif)$/i,
       use: {
@@ -92,9 +91,6 @@ module.exports = {
       ]
     }]
   },
-  node: {
-    fs: 'empty'
-  },
   plugins: [
     ...getHtmlWebpackPlugins(),
     new MiniCssExtractPlugin({
@@ -102,6 +98,7 @@ module.exports = {
       chunkFilename: "[id]_[hash:8].css"
     }),
     new CopyPlugin([
+      { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/') },
       { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
     ])
   ],

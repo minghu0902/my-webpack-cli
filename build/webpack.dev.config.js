@@ -13,11 +13,6 @@ const devConfig = {
     hot: true,
     overlay: true
   },
-  optimization: {
-    minimize: true,
-    usedExports: true,
-    sideEffects: true
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ]
