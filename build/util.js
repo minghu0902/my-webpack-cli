@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 获取入口文件
 function getEntrys () {
-  const files = glob.sync(path.resolve(__dirname, '../src/pages/**/index.{ts,js}'));
+  const files = glob.sync(path.resolve(__dirname, '../src/pages/**/index.{ts, js}'));
   let entry = {};
   files.forEach(file => {
     file = path.resolve(file);

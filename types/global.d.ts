@@ -1,3 +1,1 @@
-declare module "*.ejs" {
-  export default function render(data?: any): any;
-}
+declare function template(id: string, data: any): string;

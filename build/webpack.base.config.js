@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const { getEntrys, getHtmlWebpackPlugins } = require('./util');
@@ -12,7 +13,7 @@ module.exports = {
     filename: 'js/[name]_[hash:8].js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
+    extensions: ['.ts', '.tsx', '.js', '.ejs', '.css', '.scss']
   },
   module: {
     rules: [{
@@ -33,15 +34,8 @@ module.exports = {
         }
       }
     }, {
-      test: /\.ejs$/,
-      use: {
-        loader: 'ejs-loader',
-        options: {
-          variable: 'data',
-          interpolate : /\{\{(.+?)\}\}/g,
-          evaluate    : /\[\[(.+?)\]\]/g
-        }
-      }
+      test: /\.html$/,
+      loader: 'art-template-loader'
     }, {
       test: /\.(jpg|png|gif)$/i,
       use: {
@@ -97,6 +91,9 @@ module.exports = {
         }
       ]
     }]
+  },
+  node: {
+    fs: 'empty'
   },
   plugins: [
     ...getHtmlWebpackPlugins(),
