@@ -13,11 +13,6 @@ const devConfig = {
     hot: true,
     overlay: true
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ]

@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
+const addAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 const { getEntrys, getHtmlWebpackPlugins } = require('./util');
 
 const BUILD_ENV = process.env.BUILD_ENV || 'dev';
@@ -8,7 +10,7 @@ const BUILD_ENV = process.env.BUILD_ENV || 'dev';
 module.exports = {
   entry: getEntrys(),
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../dist/'),
     filename: 'js/[name]_[hash:8].js'
   },
   resolve: {
@@ -100,7 +102,13 @@ module.exports = {
     new CopyPlugin([
       { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/') },
       { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
-    ])
+    ]),
+    new addAssetHtmlWebpackPlugin([
+      { filepath: path.resolve(__dirname, '../dll/lodash.vendors.js') }
+    ]),
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../dll/lodash.manifest.js')
+    })
   ],
   optimization: {
     
