@@ -15,6 +15,7 @@
     "@babel/core": "^7.3.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.4",
+    "@types/handlebars": "^4.0.40",
     "@types/lodash": "^4.14.121",
     "autoprefixer": "^9.4.9",
     "babel-eslint": "^10.0.1",
