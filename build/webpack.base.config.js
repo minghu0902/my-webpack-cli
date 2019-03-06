@@ -12,7 +12,7 @@ module.exports = {
     filename: 'js/[name]_[hash:8].js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.ejs', '.css', '.scss']
+    extensions: ['.ts', '.tsx', '.js', '.hbs', '.scss', '.css']
   },
   module: {
     rules: [{
