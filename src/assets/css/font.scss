@@ -1,1 +1,21 @@
-// 字体定义
+@font-face {font-family: "iconfont";
+  src: url('../fonts/iconfont.eot'); /* IE9 */
+  // src: url('../fonts/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
+  // url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALEAAsAAAAABogAAAJ2AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAqBEIEhATYCJAMICwYABCAFhG0HMRvIBRHVkzFkPwvsZuoNQog06XAf3jcOdLAZLB8b7PsQPNHc55vdyb9NjkABkQTiIqIiWSFr2ZctkKvO1qYcksoKE6FYkqsGP6aaecbOp2s55bIYIoio7eBXCvBGDwAjDqdNoEDmg5Tj2psmdQHGAQW0N0ZbuIACi7xh7IIXeBoCBGRSjnS4AxM4FHuSALKxX7MMV/ChKEs6hEjDSkWu4uHMOfMOrkSfl9+14sDgWeyykdWdK2n5fs9Js0fDWQgI+EFA6z3AAuWAgkw0xoawCKNZAk4lF1A0+P1e+NiAHFWLsL/OLowBIB3ynonvCR71mwYABXwgH2iZFARf7dccKCSJbKhOpcShjdS8ZmLLciZXTkkUTUsYT09ONGVv9erhl/vjxif/vrhXsSJH+3p/1IPkxvd3fv92924Ie/76+Tc+Xf99Sub3Axkf8+vup5ujOLTxD4S1F2wTAgi8XZxQ5fjTf3dQAD48D5ZFnrDKMAe4k9gFfhZ/YJMaQltvVOM3pgz5+DdRERAAIbAriW9TVal3ZhFcgc9giCIDFkc+Uanl8IimHhEczQgoo3t9NMlsxyLqA6WcAhASeAFDHC9hSeA9Ualf4ZHGX0RIEIuAKTnuGE2hcL0mwpKxgeoOfb0uwjWyFhf72J6nkvLCiB4jyT4Ilm6Wkx4uSEvMkZfWZhYgaJ3BBefhNK2w0TpgzXrHvDmGIZqupNfrrGiIsGRsoLpDX6+LCNqzVnm/j+15Kqmjoc4dI8m+e7B0cwDRky2DGh7lEnlpbWYBgtYZXDAMp2mFrXnYgDXr3YTI5hhOKzFUpm+vmP9uBxBgq404Ay3cg9VW1qOiAAAA') format('woff2'),
+  // url('../fonts/iconfont.woff') format('woff'),
+  // url('../fonts/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  // url('../fonts/iconfont.svg') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-webpack:before {
+  content: "\e799";
+}
+
