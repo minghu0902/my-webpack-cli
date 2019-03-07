@@ -1,6 +1,8 @@
 const path = require('path');
 const glob = require('glob');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const addAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 
 // 获取入口文件
 function getEntrys () {
@@ -26,11 +28,38 @@ function getHtmlWebpackPlugins () {
       template: file,
       filename: name + '.html',
       chunks: [name],
-      removeComments: true,
-      collapseWhitespace: true
+      minify: true
     })
+  })
+}
+
+/**
+*  设置 addAssetHtmlWebpackPlugin，这个插件用来向页面中插入静态资源，
+*  这里的作用是将 webpack.dll.config.js 打包出来的第三方文件（即 dll 目录下的 *.dll.js）插入到页面中
+*/
+function getAddAssetHtmlWebpackPlugins() {
+  const files = glob.sync(path.resolve(__dirname, '../dll/*.dll.js'));
+  const arr = [];
+  files.forEach(file => {
+    arr.push({ filepath: file, outputPath: 'js/vendor/', publicPath: "js/vendor/" });
+  })
+  return new addAssetHtmlWebpackPlugin(arr);
+}
+
+/**
+ * 设置 DllReferencePlugin，改插件需要配置一个映射文件（即dll目录下的 *.manifest.js 文件，
+ * 这个文件是通过 webpack.dll.config.js 中 DllPlugin 插件生成的），然后当 webpack 在打包的时候，如果打包到了一个模块，
+ * 他会看这个映射文件中有没有这个模块，如果有就直接使用，不需要重新打包。主要是避免第三库的重复打包，因为第三方的库文件一般是不变的，
+ * 那就没必要重复打包，所以只要一开始打包一次就行了，这个插件配合 DllPlugin 插件就是为了解决这个问题。
+ */
+function getDllReferencePlugins() {
+  const files = glob.sync(path.resolve(__dirname, '../dll/*.manifest.js'));
+  return files.map(file => {
+    return new webpack.DllReferencePlugin({ manifest: file });
   })
 }
 
 exports.getEntrys = getEntrys;
 exports.getHtmlWebpackPlugins = getHtmlWebpackPlugins;
+exports.getAddAssetHtmlWebpackPlugins = getAddAssetHtmlWebpackPlugins;
+exports.getDllReferencePlugins = getDllReferencePlugins;

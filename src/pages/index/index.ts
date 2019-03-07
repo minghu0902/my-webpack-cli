@@ -1,3 +1,3 @@
-import * as _ from 'lodash'
+import * as util from '../../utils/index'
 
-console.log(_)
+console.log(util)

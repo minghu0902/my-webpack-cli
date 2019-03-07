@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dll/'),
-    filename: '[name].vendors.js',
+    filename: '[name].dll.js',
     library: '[name]'
   },
   plugins: [

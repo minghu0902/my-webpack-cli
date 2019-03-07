@@ -2,8 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
-const addAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
-const { getEntrys, getHtmlWebpackPlugins } = require('./util');
+const { 
+  getEntrys, 
+  getHtmlWebpackPlugins,
+  getAddAssetHtmlWebpackPlugins,
+  getDllReferencePlugins 
+} = require('./util');
 
 const BUILD_ENV = process.env.BUILD_ENV || 'dev';
 
@@ -95,6 +99,8 @@ module.exports = {
   },
   plugins: [
     ...getHtmlWebpackPlugins(),
+    ...getDllReferencePlugins(),
+    getAddAssetHtmlWebpackPlugins(),
     new MiniCssExtractPlugin({
       filename: "css/[name]_[hash:8].css",
       chunkFilename: "[id]_[hash:8].css"
@@ -102,16 +108,23 @@ module.exports = {
     new CopyPlugin([
       { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/') },
       { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
-    ]),
-    new addAssetHtmlWebpackPlugin([
-      { filepath: path.resolve(__dirname, '../dll/lodash.vendors.js') }
-    ]),
-    new webpack.DllReferencePlugin({
-      manifest: path.resolve(__dirname, '../dll/lodash.manifest.js')
-    })
+    ])
   ],
   optimization: {
-    
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        // 如果通过dll插件将第三方库拆分出来了，则将下面两个参数设为false，不然会导致重复打包
+        vendors: false,
+        default: false,
+        common: {
+          test: /[\\/]src[\\/]/,
+          filename: 'js/common.js',
+          priority: 0,
+          minChunks: 2
+        }
+      }
+    }
   }
 }
 
