@@ -79,22 +79,8 @@ module.exports = {
             importLoaders: 2
           }
         },
-        'sass-loader',
-        {
-          loader: 'postcss-loader',
-          options: {
-            ident: 'postcss',
-            plugins: [
-              require('autoprefixer')({
-                "browsers": [
-                  "> 1%",
-                  "last 6 versions",
-                  "not ie <= 8"
-                ]
-              })
-            ]
-          }
-        }
+        'postcss-loader',
+        'sass-loader'
       ]
     }]
   },
@@ -104,7 +90,7 @@ module.exports = {
     getAddAssetHtmlWebpackPlugins(),
     new MiniCssExtractPlugin({
       filename: "css/[name]_[hash:8].css",
-      chunkFilename: "[id]_[hash:8].css"
+      chunkFilename: "css/[name]_[hash:8].css"
     }),
     new CopyPlugin([
       { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/static/') },
@@ -115,12 +101,12 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
-        // 如果通过dll插件将第三方库拆分出来了，则将下面两个参数设为false，不然会导致重复打包
         vendors: false,
         default: false,
         common: {
           test: /[\\/]src[\\/]/,
           filename: 'js/common.js',
+          minSize: 10000,
           priority: 0,
           minChunks: 2
         }
