@@ -1,3 +1,4 @@
-@import '../../../assets/css/common.scss';
-@import '../../components/header/style.scss';
-@import '../../components/footer/style.scss';
+// 布局公共样式
+@import '~@/assets/css/common.scss';
+@import '~@/common/components/header/style.scss';
+@import '~@/common/components/footer/style.scss';

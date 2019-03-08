@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const { 
@@ -18,7 +17,10 @@ module.exports = {
     filename: 'js/[name]_[hash:8].js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.hbs', '.scss', '.css']
+    extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, '../src/')
+    }
   },
   module: {
     rules: [{
@@ -74,7 +76,6 @@ module.exports = {
         {
           loader: 'css-loader',
           options: {
-            modules: true,
             importLoaders: 2
           }
         },
@@ -106,7 +107,7 @@ module.exports = {
       chunkFilename: "[id]_[hash:8].css"
     }),
     new CopyPlugin([
-      { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/') },
+      { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/static/') },
       { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
     ])
   ],

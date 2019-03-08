@@ -9,6 +9,7 @@
     "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=dev webpack --json > stats.json --config ./build/webpack.prod.config.js",
     "build:dll": "webpack --config ./build/webpack.dll.config.js",
+    "analyze": "webpack-bundle-analyzer ./stats.json",
     "server": "cross-env http-server ./dist -p 8090"
   },
   "devDependencies": {

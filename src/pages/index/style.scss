@@ -1,5 +1,6 @@
-@import '../../common/layout/default/style.scss';
+@import '~@/common/layout/default/style.scss';
 
-body {
-  background: #eee;
+.icon-webpack {
+  font-size: 100px;
+  color: royalblue;
 }

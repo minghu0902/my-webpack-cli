@@ -11,6 +11,7 @@ const devConfig = {
     open: true,
     port: 9090,
     hot: true,
+    hotOnly: true,
     overlay: true
   },
   plugins: [
