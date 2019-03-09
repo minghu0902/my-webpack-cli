@@ -5,5 +5,5 @@ import { runtime, dateFormat } from '../../helper/index';
 runtime.useFileter(dateFormat);
 
 const list = document.getElementById('list');
-const html = listTpl({ time: 1493791254254, list: [1, 2] });
+const html = listTpl({ time: Date.now() });
 list.innerHTML = html;

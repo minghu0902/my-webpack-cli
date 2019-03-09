@@ -14,5 +14,7 @@
   </div>
   {{ block 'footer' }} {{ include '../../components/footer/tmp.art' }} {{ /block }}
   
+  {{@ '<script src="js/env/env.js"></script>' }}
+
 </body>
 </html>

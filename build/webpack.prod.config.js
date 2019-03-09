@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const prodConfig = {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   plugins: [
     new OptimizeCssAssetsPlugin(),
     new CleanWebpackPlugin(['dist/'], { root: path.resolve(__dirname, '../') })

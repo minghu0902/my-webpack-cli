@@ -47,7 +47,7 @@ module.exports = {
       test: /\.art$/,
       loader: 'art-template-loader'
     }, {
-      test: /\.(jpg|png|gif)$/i,
+      test: /\.(jpg|jpeg|png|gif)$/i,
       use: {
         loader: 'file-loader',
         options: {
@@ -56,7 +56,7 @@ module.exports = {
         }
       }
     }, {
-      test: /\.(jpg|png|gif)$/i,
+      test: /\.(jpg|jpeg|png|gif)$/i,
       use: {
         loader: 'url-loader',
         options: {
@@ -113,16 +113,6 @@ module.exports = {
           priority: 0,
           minChunks: 2
         }
-        // helper: {
-        //   test: /[\\/]src[\\/]helper[\\/]/,
-        //   filename: 'js/helper.js',
-        //   minSize: 10
-        // },
-        // template: {
-        //   test: /[\\/]node_modules[\\/]_art-template@4.13.2@art-template[\\/]/,
-        //   filename: 'js/template.js',
-        //   minSize: 10
-        // }
       }
     }
   }

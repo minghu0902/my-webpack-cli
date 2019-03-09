@@ -1,5 +1,1 @@
-{{ each list }}
-  {{ $index }} {{ $value }}
-  {{time | dateFormat 'yyyy年 MM月 dd日 hh:mm:ss'}}
-  {{3.14 | parseInt}}
-{{ /each }}
+{{time | dateFormat 'yyyy年 MM月 dd日 hh:mm:ss'}}
