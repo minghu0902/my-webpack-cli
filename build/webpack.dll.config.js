@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    lodash: ['lodash']
+    'lodash': ['lodash']
   },
   output: {
     path: path.resolve(__dirname, '../dll/'),

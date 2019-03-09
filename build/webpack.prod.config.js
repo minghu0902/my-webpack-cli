@@ -10,7 +10,10 @@ const prodConfig = {
   plugins: [
     new OptimizeCssAssetsPlugin(),
     new CleanWebpackPlugin(['dist/'], { root: path.resolve(__dirname, '../') })
-  ]
+  ],
+  optimization: {
+    minimize: true
+  }
 }
 
 module.exports = merge(baseConfig, prodConfig);

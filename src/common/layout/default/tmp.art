@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ block 'title' }} default title {{ /block }}</title>
+</head>
+<body>
+
+  {{ block 'header' }} {{ include '../../components/header/tmp.art' }}  {{ /block }}
+  <div id="container">
+      {{ block 'content' }} {{ /block }}
+  </div>
+  {{ block 'footer' }} {{ include '../../components/footer/tmp.art' }} {{ /block }}
+  
+</body>
+</html>

@@ -30,7 +30,7 @@ const chunkMap = {};
 
 // 设置 HtmlWebpackPlugin 
 function getHtmlWebpackPlugins () {
-  const files = glob.sync(path.resolve(__dirname, '../src/pages/**/html.js'));
+  const files = glob.sync(path.resolve(__dirname, '../src/pages/**/index.art'));
   return files.map(file => {
     file = path.resolve(file);
     const arr = file.split(path.sep);

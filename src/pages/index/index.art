@@ -1,0 +1,12 @@
+{{ extend '../../common/layout/default/tmp.art' }}
+
+{{ block 'title' }} 首页 {{ /block }}
+
+{{ block 'content' }}
+
+  <img src="{{ require('../../assets/images/img01.jpg') }}" alt="">
+  <span class="iconfont icon-webpack"></span>
+  
+  <div id="list"></div>
+
+{{ /block }}

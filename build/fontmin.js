@@ -1,6 +1,6 @@
 const Fontmin = require('fontmin');
 
-var fontmin = new Fontmin()
+var fontmin = new Fontmin();
 
 fontmin.src('fonts/*.ttf')
   .use(Fontmin.glyph({

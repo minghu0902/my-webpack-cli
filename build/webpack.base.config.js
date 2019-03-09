@@ -44,6 +44,9 @@ module.exports = {
       test: /\.hbs$/,
       loader: 'handlebars-loader'
     }, {
+      test: /\.art$/,
+      loader: 'art-template-loader'
+    }, {
       test: /\.(jpg|png|gif)$/i,
       use: {
         loader: 'file-loader',
@@ -110,6 +113,16 @@ module.exports = {
           priority: 0,
           minChunks: 2
         }
+        // helper: {
+        //   test: /[\\/]src[\\/]helper[\\/]/,
+        //   filename: 'js/helper.js',
+        //   minSize: 10
+        // },
+        // template: {
+        //   test: /[\\/]node_modules[\\/]_art-template@4.13.2@art-template[\\/]/,
+        //   filename: 'js/template.js',
+        //   minSize: 10
+        // }
       }
     }
   }
