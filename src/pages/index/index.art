@@ -1,5 +1,13 @@
 {{ extend '../../common/layout/default/tmp.art' }}
 
+{{ block 'meta' }} 
+  {{@ '<meta http-equiv="Content-Type" content="text/plain; charset=utf-8" />' }}
+{{ /block }}
+
+{{ block 'link' }}
+  {{@ '<link rel="shortcut icon" href="https://developer.mozilla.org/static/img/favicon32.7f3da72dcea1.png">' }}
+{{ /block }}
+
 {{ block 'title' }} 首页 {{ /block }}
 
 {{ block 'content' }}

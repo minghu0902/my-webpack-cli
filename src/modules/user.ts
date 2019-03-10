@@ -1,5 +1,6 @@
 
 export interface UserInterface {
+  readonly id: number;
   name: string;
   age: number;
   sex: string;
@@ -11,6 +12,7 @@ export interface UserInterface {
 }
 
 export class User implements UserInterface {
+  readonly id: number;
   name: string;
   age: number;
   sex: string;
