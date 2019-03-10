@@ -3,6 +3,14 @@
     "module": "es6",
     "target": "es5",
     "sourceMap": true,
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": "./",
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "paths": {
+      "@/**/*": ["src/**/*"] 
+    }
   }
 }

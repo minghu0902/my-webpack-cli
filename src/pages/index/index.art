@@ -6,6 +6,6 @@
 
   <div><span class="iconfont icon-webpack"></span></div>
   
-  <div id="list"></div>
+  <div id="time"></div>
 
 {{ /block }}
