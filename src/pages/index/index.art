@@ -4,7 +4,6 @@
 
 {{ block 'content' }}
 
-  <img src="{{ require('../../assets/images/img01.jpg') }}" alt="">
   <div><span class="iconfont icon-webpack"></span></div>
   
   <div id="list"></div>

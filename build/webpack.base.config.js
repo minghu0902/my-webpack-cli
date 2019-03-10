@@ -41,26 +41,16 @@ module.exports = {
         }
       }
     }, {
-      test: /\.hbs$/,
-      loader: 'handlebars-loader'
-    }, {
       test: /\.art$/,
       loader: 'art-template-loader'
     }, {
       test: /\.(jpg|jpeg|png|gif)$/i,
       use: {
-        loader: 'file-loader',
-        options: {
-          outputPath: 'images',
-          name: '[name]_[hash:8].[ext]'
-        }
-      }
-    }, {
-      test: /\.(jpg|jpeg|png|gif)$/i,
-      use: {
         loader: 'url-loader',
         options: {
-          limit: 8192
+          limit: 10240,
+          outputPath: 'images',
+          name: '[name]_[hash:8].[ext]'
         }
       }
     }, {
