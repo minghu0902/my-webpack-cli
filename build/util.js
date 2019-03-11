@@ -3,6 +3,7 @@ const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const addAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
+const htmlChunks = require('config/htmlchunks');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isDev = NODE_ENV === 'development';
@@ -22,11 +23,10 @@ function getEntrys () {
 
 
 /** 
- *  如果页面中初了通用模块之外，还需加载其他模块，则需要配置。
+ *  如果页面中初了通用模块之外，还需加载其他模块，则需要在 config/htmlchunks.js 中配置。
  *  比如，order.html ，这个页面除了 ['order', 'common']，之外还有支付和分享模块，则配置 
  *  order : ['payment', 'share']，但必须得保证在 splitChunks.cacheGroups 中拆分出了这两个模块
 */
-const chunkMap = {};
 
 // 设置 HtmlWebpackPlugin 
 function getHtmlWebpackPlugins () {
@@ -38,7 +38,7 @@ function getHtmlWebpackPlugins () {
     return new HtmlWebpackPlugin({
       template: file,
       filename: name + '.html',
-      chunks: chunkMap[name] ? [name, 'common'].concat(chunkMap[name]) : [name, 'common'],
+      chunks: htmlChunks[name] ? [name, 'common'].concat(htmlChunks[name]) : [name, 'common'],
       minify: isDev ? false : {
         collapseWhitespace: true,
         removeComments: true,

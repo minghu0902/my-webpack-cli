@@ -3,7 +3,7 @@ import timeTpl from './parts/time.art';
 import { runtime, dateFormat } from '@/helper/index';
 
 // 添加模板过滤器
-runtime.useFileter(dateFormat);
+runtime.dateFormat = dateFormat;
 
 function render(tmp: template, data: any): void {
   this.innerHTML = tmp(data);
