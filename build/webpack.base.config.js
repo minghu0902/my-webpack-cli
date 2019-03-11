@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const { 
@@ -88,20 +89,28 @@ module.exports = {
     new CopyPlugin([
       { from: path.resolve(__dirname, '../static/'), to: path.resolve(__dirname, '../dist/static/') },
       { from: path.resolve(__dirname, `../env/env.${BUILD_ENV}.js`), to: path.resolve(__dirname, '../dist/js/env/env.js'), toType: 'file' }
-    ])
+    ]),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    })
   ],
   optimization: {
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
-        vendors: false,
-        default: false,
+        jquery: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'jquery',
+          filename: 'js/vendors/jquery.js',
+          enforce: true
+        },
         common: {
-          test: /[\\/]src[\\/]/,
+          test: /[\\/]src[\\/]common[\\/]scripts[\\/]common.ts/,
+          name: 'common',
           filename: 'js/common.js',
-          minSize: 10000,
-          priority: 0,
-          minChunks: 2
+          enforce: true
         }
       }
     }

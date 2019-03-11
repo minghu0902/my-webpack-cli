@@ -11,15 +11,9 @@ function render(tmp: template, data: any): void {
 
 const list = document.getElementById('time');
 
-function init() {
-  let count = 0;  
-  function loop() {
-    count++;
-    if (count % 10 === 0) render.call(list, timeTpl, { time: Date.now() });
-    window.requestAnimationFrame(loop); 
-  }
-  loop();
-}
+setInterval(function() {
+  render.call(list, timeTpl, { time: Date.now() });
+}, 1000)
 
-init();
 
+import('@/utils/index')

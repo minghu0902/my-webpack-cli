@@ -3,7 +3,7 @@ const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const addAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
-const htmlChunks = require('config/htmlchunks');
+const htmlChunks = require('./htmlchunks');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isDev = NODE_ENV === 'development';
@@ -38,7 +38,7 @@ function getHtmlWebpackPlugins () {
     return new HtmlWebpackPlugin({
       template: file,
       filename: name + '.html',
-      chunks: htmlChunks[name] ? [name, 'common'].concat(htmlChunks[name]) : [name, 'common'],
+      chunks: htmlChunks[name] ? htmlChunks['common'].concat(htmlChunks[name]).concat(name) : htmlChunks['common'].concat(name),
       minify: isDev ? false : {
         collapseWhitespace: true,
         removeComments: true,
@@ -59,7 +59,7 @@ function getAddAssetHtmlWebpackPlugins() {
   const files = glob.sync(path.resolve(__dirname, '../dll/*.dll.js'));
   const arr = [];
   files.forEach(file => {
-    arr.push({ filepath: file, outputPath: 'js/vendor/', publicPath: "js/vendor/" });
+    arr.push({ filepath: file, outputPath: 'js/vendors/', publicPath: "js/vendors/" });
   })
   return new addAssetHtmlWebpackPlugin(arr);
 }
