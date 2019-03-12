@@ -14,6 +14,7 @@ const BUILD_ENV = process.env.BUILD_ENV || 'dev';
 module.exports = {
   entry: getEntrys(),
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, '../dist/'),
     filename: 'js/[name]_[hash:8].js'
   },
@@ -100,6 +101,8 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
+        vendors: false,
+        default: false,
         jquery: {
           test: /[\\/]node_modules[\\/]/,
           name: 'jquery',
