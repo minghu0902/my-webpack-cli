@@ -101,12 +101,9 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
-        vendors: false,
-        default: false,
-        jquery: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'jquery',
-          filename: 'js/vendors/jquery.js',
+          name: 'vendors',
           enforce: true
         },
         common: {

@@ -4,5 +4,5 @@
 */
 
 module.exports = {
-  common: ['jquery', 'common']
+  common: ['vendors', 'common']
 }
