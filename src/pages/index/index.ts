@@ -14,6 +14,3 @@ const list = document.getElementById('time');
 setInterval(function() {
   render.call(list, timeTpl, { time: Date.now() });
 }, 1000)
-
-
-import('@/utils/index')

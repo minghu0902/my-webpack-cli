@@ -2,21 +2,21 @@
 (vscode 中可以安装 Markdown Preview Enhanced 插件直接预览 Markdown 文件)
 
 ### 一、目录介绍
-> build: 打包相关配置
-> config: 配置文件
-> dll: 第三方库打包后生产的目录
-> env: 环境变量配置
-> src: 开发目录
-> &emsp;- api: 接口配置目录
-> &emsp;- assets: font、css、image、公共资源目录
-> &emsp;- common: 公共组件、布局和脚本文件
-> &emsp;- helper: 目前存放了模板中使用的过滤器方法
-> &emsp;- modules: 相关的模块文件，并统一在 index.ts 中输出
-> &emsp;- pages: 页面文件，一个页面一个目录
-> &emsp;- utils: 工具方法文件，并统一在 index.ts 中输出
-> static: 存放静态文件，打包后直接会被 copy 到根目录下
-> types: 存放自定义的 typescript 类型文件
-> stats.json: webpack --json > stats.json 这条命名生成出来的打包详细信息文件，可以通过[可视化工具](https://webpack.js.org/guides/code-splitting#bundle-analysis)进行打包分析
+> build: 打包相关配置  
+> config: 配置文件  
+> dll: 第三方库打包后生产的目录  
+> env: 环境变量配置   
+> src: 开发目录  
+> &emsp;- api: 接口配置目录  
+> &emsp;- assets: font、css、image、公共资源目录  
+> &emsp;- common: 公共组件、布局和脚本文件  
+> &emsp;- helper: 目前存放了模板中使用的过滤器方法  
+> &emsp;- modules: 相关的模块文件，并统一在 index.ts 中输出  
+> &emsp;- pages: 页面文件，一个页面一个目录  
+> &emsp;- utils: 工具方法文件，并统一在 index.ts 中输出  
+> static: 存放静态文件，打包后直接会被 copy 到根目录下  
+> types: 存放自定义的 typescript 类型文件  
+> stats.json: webpack --json > stats.json 这条命名生成出来的打包详细信息文件，可以通过[可视化工具(https://webpack.js.org/guides/code-splitting#bundle-analysis)进行打包分析  
 
 ### 二、关于第三方库文件的打包
 > 1、如果是全局通用的第三方库文件，则可以在 webpack.dll.config.js 中配置，将其单独打包出来
